@@ -1,0 +1,285 @@
+:root {
+    --bg-dark: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --neon-blue: #3b82f6;
+    --neon-blue-glow: rgba(59, 130, 246, 0.5);
+    --neon-pink: #ec4899;
+    --neon-pink-glow: rgba(236, 72, 153, 0.5);
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Dynamic background */
+.background-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 50%);
+    animation: pulseBg 10s infinite alternate;
+}
+
+@keyframes pulseBg {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.edit-hint {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.edit-hint code {
+    background: rgba(255,255,255,0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.voting-arena {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .voting-arena {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.candidate-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+#card-1 { animation-delay: 0.2s; }
+#card-2 { animation-delay: 0.4s; }
+
+.candidate-card:hover {
+    transform: translateY(-10px);
+}
+
+#card-1:hover {
+    box-shadow: 0 15px 35px var(--neon-blue-glow);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+#card-2:hover {
+    box-shadow: 0 15px 35px var(--neon-pink-glow);
+    border-color: rgba(236, 72, 153, 0.3);
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.gradient-1 {
+    background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.gradient-2 {
+    background: linear-gradient(135deg, #f472b6, #db2777);
+}
+
+.candidate-card h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.vote-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.vote-count span[id^="score"] {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vote-count .label {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+#score-1 { color: var(--neon-blue); }
+#score-2 { color: var(--neon-pink); }
+
+.vote-btn {
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-1 {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 4px 15px var(--neon-blue-glow);
+}
+
+.btn-1:hover {
+    background: linear-gradient(135deg, #60a5fa, #2563eb);
+    transform: scale(1.05);
+}
+
+.btn-2 {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+    box-shadow: 0 4px 15px var(--neon-pink-glow);
+}
+
+.btn-2:hover {
+    background: linear-gradient(135deg, #f472b6, #db2777);
+    transform: scale(1.05);
+}
+
+.vote-btn:active {
+    transform: scale(0.95);
+}
+
+.vs-badge {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    z-index: 10;
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s backwards;
+}
+
+.controls {
+    margin-top: 1rem;
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border-color: white;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popScore {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}

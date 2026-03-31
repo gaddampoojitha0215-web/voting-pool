@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Head-to-Head Voting</title>
+    <meta name="description" content="A beautiful and dynamic web application for voting between two candidates.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-anim"></div>
+    <div class="container">
+        <header>
+            <h1>Make Your Choice</h1>
+            <p>Click the vote buttons below to support your favorite candidate</p>
+            <p class="edit-hint">You can modify the candidate names directly in the <code>script.js</code> file.</p>
+        </header>
+
+        <div class="voting-arena">
+            <!-- Candidate 1 -->
+            <div class="candidate-card" id="card-1">
+                <div class="avatar gradient-1"></div>
+                <h2 id="name-1">Candidate 1</h2>
+                <div class="vote-count">
+                    <span id="score-1">0</span> <span class="label">Votes</span>
+                </div>
+                <button class="vote-btn btn-1" onclick="vote(1)">Vote <span id="btn-name-1">Candidate 1</span></button>
+            </div>
+
+            <!-- VS Badge -->
+            <div class="vs-badge">VS</div>
+
+            <!-- Candidate 2 -->
+            <div class="candidate-card" id="card-2">
+                <div class="avatar gradient-2"></div>
+                <h2 id="name-2">Candidate 2</h2>
+                <div class="vote-count">
+                    <span id="score-2">0</span> <span class="label">Votes</span>
+                </div>
+                <button class="vote-btn btn-2" onclick="vote(2)">Vote <span id="btn-name-2">Candidate 2</span></button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="reset-btn" onclick="resetVotes()">Reset All Votes</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
